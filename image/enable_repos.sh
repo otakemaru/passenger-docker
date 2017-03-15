@@ -14,4 +14,11 @@ else
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list
 fi
 
+## yarn
+run curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+
+## Node.js
+run curl -sL https://deb.nodesource.com/setup_6.x | bash -
+
 run apt-get update

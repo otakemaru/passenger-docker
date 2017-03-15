@@ -5,7 +5,10 @@ source /pd_build/buildconfig
 ## The Rails asset compiler requires a Javascript runtime.
 if [[ ! -e /usr/bin/node ]]; then
 	run minimal_apt_get_install nodejs
-	run ln -s /usr/bin/nodejs /usr/bin/node
+	## https://deb.nodesource.com install node
+	if [[ ! -e /usr/bin/node ]]; then
+		run ln -s /usr/bin/nodejs /usr/bin/node
+	fi
 fi
 
 ## Install development headers for native libraries that tend to be used often by Ruby gems.
