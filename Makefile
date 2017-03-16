@@ -175,3 +175,11 @@ clean_images:
 	docker rmi $(NAME)-jruby91:latest $(NAME)-jruby91:$(VERSION) || true
 	docker rmi $(NAME)-nodejs:latest $(NAME)-nodejs:$(VERSION) || true
 	docker rmi $(NAME)-full:latest $(NAME)-full:$(VERSION) || true
+
+build_my_images: \
+	build_ruby24 \
+	build_ruby24_nodejs
+
+push_my_images:
+	docker push $(NAME)-ruby24:$(VERSION)
+	docker push $(NAME)-ruby24-nodejs:$(VERSION)
