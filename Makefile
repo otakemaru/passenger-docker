@@ -1,5 +1,5 @@
 NAME = otakemaru/passenger
-VERSION = 0.9.20.2
+VERSION = 0.9.20.3
 
 .PHONY: all build_all \
 	build_customizable \
