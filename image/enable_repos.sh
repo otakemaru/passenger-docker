@@ -14,4 +14,11 @@ else
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list
 fi
 
+echo "+ Enabling Yarn APT repo"
+run curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+
+echo "+ Enabling Node Source APT repo"
+run curl -sSL https://deb.nodesource.com/setup_8.x | bash -
+
 run apt-get update
