@@ -1,5 +1,5 @@
-NAME = phusion/passenger
-VERSION = 0.9.21
+NAME = otakemaru/passenger
+VERSION = 0.9.21.1
 
 .PHONY: all build_all \
 	build_customizable \
