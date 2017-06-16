@@ -6,6 +6,26 @@ ruby21_image
 ruby22_image
 ruby23_image
 ruby24_image
+ruby23_nodejs_image
+ruby24_nodejs_image
 jruby91_image
 nodejs_image
 full_image
+
+# Created by https://www.gitignore.io/api/vim
+
+### Vim ###
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+# End of https://www.gitignore.io/api/vim
