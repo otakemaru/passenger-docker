@@ -65,6 +65,22 @@ build_ruby24:
 	echo final=1 >> ruby24_image/buildconfig
 	docker build $(EXTRA_BUILD_FLAGS) -t $(NAME)-ruby24:$(VERSION) --rm ruby24_image
 
+build_ruby23_nodejs:
+	rm -rf ruby23_nodejs_image
+	cp -pR image ruby23_nodejs_image
+	echo ruby23=1 >> ruby23_nodejs_image/buildconfig
+	echo nodejs=1 >> ruby23_nodejs_image/buildconfig
+	echo final=1 >> ruby23_nodejs_image/buildconfig
+	docker build $(EXTRA_BUILD_FLAGS) -t $(NAME)-ruby23-nodejs:$(VERSION) --rm ruby23_nodejs_image
+
+build_ruby24_nodejs:
+	rm -rf ruby24_nodejs_image
+	cp -pR image ruby24_nodejs_image
+	echo ruby24=1 >> ruby24_nodejs_image/buildconfig
+	echo nodejs=1 >> ruby24_nodejs_image/buildconfig
+	echo final=1 >> ruby24_nodejs_image/buildconfig
+	docker build $(EXTRA_BUILD_FLAGS) -t $(NAME)-ruby24-nodejs:$(VERSION) --rm ruby24_nodejs_image
+
 build_jruby91:
 	rm -rf jruby91_image
 	cp -pR image jruby91_image
@@ -148,3 +164,16 @@ clean_images:
 	docker rmi $(NAME)-jruby91:latest $(NAME)-jruby91:$(VERSION) || true
 	docker rmi $(NAME)-nodejs:latest $(NAME)-nodejs:$(VERSION) || true
 	docker rmi $(NAME)-full:latest $(NAME)-full:$(VERSION) || true
+
+build_my_images: \
+	build_ruby23_nodejs \
+	build_ruby24_nodejs
+
+push_my_images:
+	docker push $(NAME)-ruby23-nodejs:$(VERSION)
+	docker push $(NAME)-ruby24-nodejs:$(VERSION)
+
+clean_my_images:
+	docker rmi $(NAME)-ruby23-nodejs:latest $(NAME)-ruby23-nodejs:$(VERSION) || true
+	docker rmi $(NAME)-ruby24-nodejs:latest $(NAME)-ruby24-nodejs:$(VERSION) || true
+	rm -rf ruby23_nodejs_image ruby24_nodejs_image
